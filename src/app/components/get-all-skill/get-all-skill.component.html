@@ -1,0 +1,51 @@
+<div class="container col-md-9">
+    <h2 class="text-center" class="display-4">LIST OF SKILLS</h2>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+        <tr *ngFor="let skl of skills">
+          <td>{{ skl.id }}</td>
+          <td>{{ skl.name }}</td>
+          <td>{{ skl.description }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="editSkills(skl)"> UPDATE </button>
+            <button type="button" class="btn btn-outline-danger" (click)="deleteSkill(skl)"> DELETE </button>
+          </td>
+        </tr>
+      </table>
+      <div class ="card col-md-6">
+        <div class="card-body" *ngIf=editSkill>
+          <h1>update Skill</h1>
+        <form   #frm="ngForm" (ngSubmit)="updateSkill(skl)" >
+      
+          <div>
+            <input type="number" placeholder="enter id" id="id"  name="eid" [(ngModel)]=sk.id  #eid="ngModel" class="form-control" disabled>
+          </div>
+      
+        
+        <div>
+          <input type="text" placeholder="Enter Skill Name" id="name" name="name" [(ngModel)]="sk.name" #name="ngModel" class="form-control" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">Name Cannot be empty</div>
+       
+        <div>
+          <input type="text" placeholder="Enter Skill Description" id="description" name="description" [(ngModel)]="sk.description" #description="ngModel"  class="form-control" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">Description cannot be empty</div>
+      
+        <div>
+        <input type="submit" value="update Skill"  [disabled]="!frm.valid"  class="btn btn-success">
+      </div>
+      </form>
+         
+      </div>
+        </div>
+        </div>
+      
+    

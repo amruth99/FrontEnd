@@ -1,0 +1,23 @@
+<div class="container col-md-6">
+    <h2 class="text-center" class="display-4">Add skill</h2>
+  <form #frm="ngForm" novalidate (ngSubmit)="skillSave();  frm.resetForm()">
+  <div>
+    <input type="text" placeholder="Enter Skill Name" id="name" name="name" [(ngModel)]="skl.name" #name="ngModel" [ngClass]= "{'is-invalid':name?.errors && (name?.touched || name?.dirty),
+    'is-valid':name?.valid}" class="form-control" required>
+  </div>
+  <div class="alert alert-danger" *ngIf="name.invalid&&name.touched">Name should not be empty</div>
+  <div>
+    <input type="text" placeholder="Enter Skill Description" id="description" name="description" [(ngModel)]="skl.description" [ngClass]= "{'is-invalid':description?.errors && (description?.touched || name?.dirty),
+    'is-valid':description?.valid}"  #description="ngModel"  class="form-control" required>
+  </div>
+  <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">Description cannot be empty</div>
+  <div class="row top-buffer">
+    <div class="text-center">
+      <input type="submit" value="Add Skill"  [disabled]="!frm.valid"  class="btn btn-success">
+    </div>
+  </div>
+</form>
+</div>
+
+
+
